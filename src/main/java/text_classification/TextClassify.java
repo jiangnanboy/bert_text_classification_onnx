@@ -40,6 +40,9 @@ public class TextClassify {
      * @throws Exception
      */
     public static Map<String, OnnxTensor> parseInputText(String text) throws Exception{
+        if(text.length() > 510) {
+            text = text.substring(0, 510);
+        }
         OrtEnvironment env = LoadModel.env;
         List<String > tokens = tokenizer.tokenize(text);
 
